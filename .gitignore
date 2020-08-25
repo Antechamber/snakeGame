@@ -48,3 +48,5 @@ coverage.xml
 
 # Virtual environments
 venv/
+
+idea/
