@@ -26,12 +26,12 @@ def message(msg: str, color: tuple):
     dis.blit(mesg, location)
 
 
-def display_score(score: int):
+def display_score(score):
     location = [0, 0]
     dis.blit(font_style.render("Score: " + str(score), True, score_color), location)
 
 
-def display_snake(snake_block: int, snake_list):
+def display_snake(snake_block, snake_list):
     for x in snake_list:
         pygame.draw.rect(dis, snake_color, [x[0], x[1], snake_block, snake_block])
 
@@ -43,8 +43,8 @@ def game_loop():
     score = 0
 
     # gameplay controls
-    x1 = dis_width / 2
-    y1 = dis_height / 2
+    x1 = int(dis_width / 2)
+    y1 = int(dis_height / 2)
     x_change = 0
     y_change = 0
     snake_block = 10
@@ -91,7 +91,7 @@ def game_loop():
                     x_change = snake_block
                     y_change = 0
         # hitting the border
-        if x1 == 0 or y1 == 0 or x1 > dis_width or y1 > dis_height:
+        if x1 == 0 or y1 == 0 or x1 >= dis_width or y1 >= dis_height:
             game_close = True
 
         x1 += x_change
