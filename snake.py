@@ -1,6 +1,5 @@
 import sys
 import pygame
-import time
 import random
 
 pygame.init()
@@ -32,7 +31,7 @@ def display_score(score: int):
     dis.blit(font_style.render("Score: " + str(score), True, score_color), location)
 
 
-def display_snake(snake_block: int, snake_list: tuple):
+def display_snake(snake_block: int, snake_list):
     for x in snake_list:
         pygame.draw.rect(dis, snake_color, [x[0], x[1], snake_block, snake_block])
 
@@ -102,6 +101,8 @@ def game_loop():
         # draw snake
         pygame.draw.rect(dis, snake_color, [round(x1), round(y1), snake_block, snake_block])
         snake_head = []
+        snake_head.append(x1)
+        snake_head.append(y1)
         snake_list.append(snake_head)
         if len(snake_list) > snake_length:
             del(snake_list[0])
