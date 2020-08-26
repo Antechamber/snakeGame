@@ -48,12 +48,12 @@ def game_loop():
     x_change = 0
     y_change = 0
     snake_block = 10
-    snake_speed = 30
+    snake_speed = 20
 
     snake_list = []
     snake_length = 1
-    foodx = round(random.randrange(1, dis_width - snake_block) / 10) * 10
-    foody = round(random.randrange(1, dis_height - snake_block) / 10) * 10
+    foodx = round(random.randrange(1, dis_width - snake_block - 1) / 10) * 10
+    foody = round(random.randrange(1, dis_height - snake_block - 1) / 10) * 10
 
     while not game_over:
         # game exit / reset options
@@ -91,7 +91,7 @@ def game_loop():
                     x_change = snake_block
                     y_change = 0
         # hitting the border
-        if x1 == 0 or y1 == 0 or x1 >= dis_width or y1 >= dis_height:
+        if x1 == 0 or y1 == 0 or x1 > dis_width or y1 > dis_height:
             game_close = True
 
         x1 += x_change
@@ -105,7 +105,7 @@ def game_loop():
         snake_head.append(y1)
         snake_list.append(snake_head)
         if len(snake_list) > snake_length:
-            del(snake_list[0])
+            del (snake_list[0])
 
         # hitting snake body
         for x in snake_list[:-1]:
